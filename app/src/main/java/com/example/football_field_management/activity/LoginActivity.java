@@ -1,6 +1,5 @@
-package com.example.btl_android.activity;
+package com.example.football_field_management.activity;
 
-import com.example.btl_android.utils.SessionManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -10,8 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.btl_android.R;
-import com.example.btl_android.database.DatabaseHelper;
+import com.example.football_field_management.R;
+import com.example.football_field_management.database.DatabaseHelper;
+import com.example.football_field_management.utils.SessionManager;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText;

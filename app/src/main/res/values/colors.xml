@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#3F51B5</color> <!-- Xanh Indigo -->
+    <color name="primaryDark">#303F9F</color>
+    <color name="primaryLight">#C5CAE9</color>
+
+    <!-- Màu nền -->
+    <color name="background">#F5F5F5</color> <!-- Xám nhạt -->
+
+    <!-- Màu phụ -->
+    <color name="secondary">#FF9800</color> <!-- Cam -->
+
+    <color name="error">#E53935</color>   <!-- Đỏ tươi -->
 </resources>

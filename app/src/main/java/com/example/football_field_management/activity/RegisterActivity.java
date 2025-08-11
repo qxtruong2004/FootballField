@@ -1,4 +1,4 @@
-package com.example.btl_android.activity;
+package com.example.football_field_management.activity;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -7,8 +7,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.btl_android.R;
-import com.example.btl_android.database.DatabaseHelper;
+import com.example.football_field_management.R;
+import com.example.football_field_management.database.DatabaseHelper;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText, confirmPasswordEditText;
