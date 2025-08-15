@@ -1,12 +1,17 @@
 package com.example.football_field_management.database;
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+
+import com.example.football_field_management.model.Booking;
+import com.example.football_field_management.model.Field;
 import com.example.football_field_management.model.Service;
+import com.example.football_field_management.model.ServiceUsage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -143,6 +148,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return valid;
     }
 
+    // Field methods
+    public boolean addField(Field field) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FIELD_NAME, field.getName());
+        values.put(COLUMN_FIELD_PRICE, field.getPrice());
+        long result = db.insert(TABLE_FIELDS, null, values);
+        db.close();
+        return result != -1;
+    }
+
+    public boolean updateField(Field field) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FIELD_NAME, field.getName());
+        values.put(COLUMN_FIELD_PRICE, field.getPrice());
+        int result = db.update(TABLE_FIELDS, values, COLUMN_ID + "=?",
+                new String[]{String.valueOf(field.getId())});
+        db.close();
+        return result > 0;
+    }
+
+    public boolean deleteField(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_FIELDS, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+        return result > 0;
+    }
+
+    public List<Field> getAllFields() {
+        List<Field> fields = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_FIELDS, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Field field = new Field();
+                field.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                field.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIELD_NAME)));
+                field.setPrice(cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_FIELD_PRICE)));
+                fields.add(field);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return fields;
+    }
+
     // Service methods
     public boolean addService(Service service) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -190,4 +242,198 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return services;
     }
 
+    // Booking methods
+    public boolean addBooking(Booking booking, List<ServiceUsage> serviceUsages) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_FIELD_ID, booking.getFieldId());
+            values.put(COLUMN_CUSTOMER_NAME, booking.getCustomerName());
+            values.put(COLUMN_PHONE, booking.getPhone());
+            values.put(COLUMN_DATE, booking.getDate());
+            values.put(COLUMN_TIME, booking.getTime());
+            values.put(COLUMN_IS_PAID, booking.isPaid() ? 1 : 0);
+            long bookingId = db.insert(TABLE_BOOKINGS, null, values);
+
+            for (ServiceUsage usage : serviceUsages) {
+                ContentValues usageValues = new ContentValues();
+                usageValues.put(COLUMN_BOOKING_ID, bookingId);
+                usageValues.put(COLUMN_SERVICE_ID, usage.getServiceId());
+                usageValues.put(COLUMN_QUANTITY, usage.getQuantity());
+                db.insert(TABLE_SERVICE_USAGE, null, usageValues);
+            }
+
+            db.setTransactionSuccessful();
+            return true;
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+    }
+
+    public boolean updateBooking(Booking booking, List<ServiceUsage> serviceUsages) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_FIELD_ID, booking.getFieldId());
+            values.put(COLUMN_CUSTOMER_NAME, booking.getCustomerName());
+            values.put(COLUMN_PHONE, booking.getPhone());
+            values.put(COLUMN_DATE, booking.getDate());
+            values.put(COLUMN_TIME, booking.getTime());
+            values.put(COLUMN_IS_PAID, booking.isPaid() ? 1 : 0);
+            db.update(TABLE_BOOKINGS, values, COLUMN_ID + "=?", new String[]{String.valueOf(booking.getId())});
+
+            db.delete(TABLE_SERVICE_USAGE, COLUMN_BOOKING_ID + "=?", new String[]{String.valueOf(booking.getId())});
+
+            for (ServiceUsage usage : serviceUsages) {
+                ContentValues usageValues = new ContentValues();
+                usageValues.put(COLUMN_BOOKING_ID, booking.getId());
+                usageValues.put(COLUMN_SERVICE_ID, usage.getServiceId());
+                usageValues.put(COLUMN_QUANTITY, usage.getQuantity());
+                db.insert(TABLE_SERVICE_USAGE, null, usageValues);
+            }
+
+            db.setTransactionSuccessful();
+            return true;
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+    }
+
+    public boolean deleteBooking(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.beginTransaction();
+        try {
+            db.delete(TABLE_SERVICE_USAGE, COLUMN_BOOKING_ID + "=?", new String[]{String.valueOf(id)});
+            int result = db.delete(TABLE_BOOKINGS, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+            db.setTransactionSuccessful();
+            return result > 0;
+        } finally {
+            db.endTransaction();
+            db.close();
+        }
+    }
+
+    public List<Booking> getAllBookings() {
+        List<Booking> bookings = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_BOOKINGS, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Booking booking = new Booking();
+                booking.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                booking.setFieldId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_FIELD_ID)));
+                booking.setCustomerName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CUSTOMER_NAME)));
+                booking.setPhone(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PHONE)));
+                booking.setDate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)));
+                booking.setTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME)));
+                booking.setPaid(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_PAID)) == 1);
+                bookings.add(booking);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return bookings;
+    }
+
+    public List<ServiceUsage> getServiceUsagesForBooking(int bookingId) {
+        List<ServiceUsage> usages = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_SERVICE_USAGE, null, COLUMN_BOOKING_ID + "=?",
+                new String[]{String.valueOf(bookingId)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                ServiceUsage usage = new ServiceUsage();
+                usage.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                usage.setBookingId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_BOOKING_ID)));
+                usage.setServiceId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_SERVICE_ID)));
+                usage.setQuantity(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_QUANTITY)));
+                usages.add(usage);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return usages;
+    }
+
+    public String getFieldNameById(int fieldId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_FIELDS, new String[]{COLUMN_FIELD_NAME},
+                COLUMN_ID + "=?", new String[]{String.valueOf(fieldId)}, null, null, null);
+        String name = "";
+        if (cursor.moveToFirst()) {
+            name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIELD_NAME));
+        }
+        cursor.close();
+        db.close();
+        return name;
+    }
+
+    public double getFieldPriceById(int fieldId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_FIELDS, new String[]{COLUMN_FIELD_PRICE},
+                COLUMN_ID + "=?", new String[]{String.valueOf(fieldId)}, null, null, null);
+        double price = 0;
+        if (cursor.moveToFirst()) {
+            price = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_FIELD_PRICE));
+        }
+        cursor.close();
+        db.close();
+        return price;
+    }
+
+    public String getServiceNameById(int serviceId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_SERVICES, new String[]{COLUMN_SERVICE_NAME},
+                COLUMN_ID + "=?", new String[]{String.valueOf(serviceId)}, null, null, null);
+        String name = "";
+        if (cursor.moveToFirst()) {
+            name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SERVICE_NAME));
+        }
+        cursor.close();
+        db.close();
+        return name;
+    }
+
+    public double getServicePriceById(int serviceId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_SERVICES, new String[]{COLUMN_SERVICE_PRICE},
+                COLUMN_ID + "=?", new String[]{String.valueOf(serviceId)}, null, null, null);
+        double price = 0;
+        if (cursor.moveToFirst()) {
+            price = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_SERVICE_PRICE));
+        }
+        cursor.close();
+        db.close();
+        return price;
+    }
+
+    public boolean markBookingAsPaid(int bookingId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_IS_PAID, 1);
+        int result = db.update(TABLE_BOOKINGS, values, COLUMN_ID + "=?", new String[]{String.valueOf(bookingId)});
+        db.close();
+        return result > 0;
+    }
+
+    public double getTotalPaidAmount() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        double total = 0;
+        List<Booking> bookings = getAllBookings();
+        for (Booking booking : bookings) {
+            if (booking.isPaid()) {
+                total += getFieldPriceById(booking.getFieldId());
+                List<ServiceUsage> usages = getServiceUsagesForBooking(booking.getId());
+                for (ServiceUsage usage : usages) {
+                    total += getServicePriceById(usage.getServiceId()) * usage.getQuantity();
+                }
+            }
+        }
+        db.close();
+        return total;
+    }
 }

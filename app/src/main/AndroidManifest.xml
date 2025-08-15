@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Football_Field_Management"
         tools:targetApi="31">
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +26,10 @@
         <activity android:name=".activity.ServiceManagementActivity" />
         <activity android:name=".activity.AddEditServiceActivity" />
 
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".AddEditBookingActivity"/>
+        <activity android:name=".BookingDetailActivity"/>
+        <activity android:name=".BookingManagementActivity"/>
     </application>
 
 </manifest>

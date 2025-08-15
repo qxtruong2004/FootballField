@@ -1,3 +1,4 @@
 <resources>
+    <string name="football_field">Football Field</string>
     <string name="app_name">FootballField</string>
 </resources>

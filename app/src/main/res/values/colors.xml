@@ -2,6 +2,36 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bg_splash">#A5D6A7</color>
+    <color name="primary_color">#4CAF50</color>
+    <color name="primary_variant_color">#388E3C</color>
+    <color name="on_primary_color">#FFFFFF</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary_color">#FF9800</color>
+    <color name="secondary_variant_color">#F57C00</color>
+    <color name="on_secondary_color">#FFFFFF</color>
+
+    <!-- Background Colors -->
+    <color name="background_color">#F5F5F5</color>
+    <color name="surface_color">#FFFFFF</color>
+    <color name="on_background_color">#212121</color>
+    <color name="on_surface_color">#212121</color>
+
+    <!-- Accent Colors -->
+    <color name="accent_color">#2196F3</color>
+    <color name="error_color">#F44336</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_disabled">#BDBDBD</color>
+
+    <!-- Divider -->
+    <color name="divider_color">#E0E0E0</color>
+
+    <!-- Ripple Effect -->
+    <color name="ripple_color">#1F4CAF50</color>
     <color name="primary">#3F51B5</color> <!-- Xanh Indigo -->
     <color name="primaryDark">#303F9F</color>
     <color name="primaryLight">#C5CAE9</color>
