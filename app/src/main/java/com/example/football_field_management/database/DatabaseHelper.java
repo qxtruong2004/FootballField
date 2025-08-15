@@ -6,6 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.football_field_management.model.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "FootballFieldManager.db";
     private static final int DATABASE_VERSION = 1;
@@ -57,10 +62,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_USERNAME + " TEXT UNIQUE,"
                 + COLUMN_PASSWORD + " TEXT)";
         db.execSQL(CREATE_USERS_TABLE);
+
+        // Create fields table
+        String CREATE_FIELDS_TABLE = "CREATE TABLE " + TABLE_FIELDS + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_FIELD_NAME + " TEXT,"
+                + COLUMN_FIELD_PRICE + " REAL)";
+        db.execSQL(CREATE_FIELDS_TABLE);
+
+        // Create services table
+        String CREATE_SERVICES_TABLE = "CREATE TABLE " + TABLE_SERVICES + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_SERVICE_NAME + " TEXT,"
+                + COLUMN_SERVICE_PRICE + " REAL)";
+        db.execSQL(CREATE_SERVICES_TABLE);
+
+        // Create bookings table
+        String CREATE_BOOKINGS_TABLE = "CREATE TABLE " + TABLE_BOOKINGS + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_FIELD_ID + " INTEGER,"
+                + COLUMN_CUSTOMER_NAME + " TEXT,"
+                + COLUMN_PHONE + " TEXT,"
+                + COLUMN_DATE + " TEXT,"
+                + COLUMN_TIME + " TEXT,"
+                + COLUMN_IS_PAID + " INTEGER,"
+                + "FOREIGN KEY(" + COLUMN_FIELD_ID + ") REFERENCES " + TABLE_FIELDS + "(" + COLUMN_ID + "))";
+        db.execSQL(CREATE_BOOKINGS_TABLE);
+
+        // Create service_usage table
+        String CREATE_SERVICE_USAGE_TABLE = "CREATE TABLE " + TABLE_SERVICE_USAGE + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_BOOKING_ID + " INTEGER,"
+                + COLUMN_SERVICE_ID + " INTEGER,"
+                + COLUMN_QUANTITY + " INTEGER,"
+                + "FOREIGN KEY(" + COLUMN_BOOKING_ID + ") REFERENCES " + TABLE_BOOKINGS + "(" + COLUMN_ID + "),"
+                + "FOREIGN KEY(" + COLUMN_SERVICE_ID + ") REFERENCES " + TABLE_SERVICES + "(" + COLUMN_ID + "))";
+        db.execSQL(CREATE_SERVICE_USAGE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SERVICE_USAGE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOKINGS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SERVICES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FIELDS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         onCreate(db);
     }
@@ -98,5 +143,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return valid;
     }
 
+    // Service methods
+    public boolean addService(Service service) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_SERVICE_NAME, service.getName());
+        values.put(COLUMN_SERVICE_PRICE, service.getPrice());
+        long result = db.insert(TABLE_SERVICES, null, values);
+        db.close();
+        return result != -1;
+    }
+
+    public boolean updateService(Service service) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_SERVICE_NAME, service.getName());
+        values.put(COLUMN_SERVICE_PRICE, service.getPrice());
+        int result = db.update(TABLE_SERVICES, values, COLUMN_ID + "=?",
+                new String[]{String.valueOf(service.getId())});
+        db.close();
+        return result > 0;
+    }
+
+    public boolean deleteService(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_SERVICES, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+        return result > 0;
+    }
+
+    public List<Service> getAllServices() {
+        List<Service> services = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_SERVICES, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Service service = new Service();
+                service.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                service.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SERVICE_NAME)));
+                service.setPrice(cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_SERVICE_PRICE)));
+                services.add(service);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return services;
+    }
 
 }
