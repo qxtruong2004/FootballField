@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:id="@+id/btnBackDetail"
+            android:src="@drawable/arrow_left_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="15dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chi Tiết Lịch Đặt Sân"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_color"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="25dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_field_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sân bóng:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/text_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text_field_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_customer_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Khách hàng:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/text_field"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_customer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text_customer_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_phone_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số điện thoại:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/text_customer"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text_phone_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/text_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text_date_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giờ:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/text_date"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text_time_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_services_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dịch vụ:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/text_time"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_services"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_services_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_total_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng tiền:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/recycler_services"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/text_total_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_pay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Thanh toán"
+            style="@style/MyMaterialButtonStyle"
+            android:backgroundTint="@color/primary_color"
+            app:layout_constraintTop_toBottomOf="@id/text_total"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyMaterialButtonStyle" parent="Widget.MaterialComponents.Button">
+        <!-- Kích thước và padding -->
+        <item name="android:layout_height">56dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">15dp</item>
+
+        <!-- Màu nền và chữ -->
+        <item name="backgroundTint">@color/primary_color</item>
+        <item name="android:textColor">@android:color/white</item>
+
+        <!-- Icon -->
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">8dp</item>
+    </style>
+
+</resources>

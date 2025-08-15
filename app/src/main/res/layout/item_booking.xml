@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Hàng 1: Sân, Khách hàng, Ngày -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_booking_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sân 5 người"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:ellipsize="end"
+            android:singleLine="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/text_booking_customer"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_booking_customer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nguyễn Văn A"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:ellipsize="end"
+            android:singleLine="true"
+            app:layout_constraintStart_toEndOf="@id/text_booking_field"
+            app:layout_constraintEnd_toStartOf="@id/text_booking_date"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.4" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_booking_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="15/08/2025"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:ellipsize="end"
+            android:singleLine="true"
+            app:layout_constraintStart_toEndOf="@id/text_booking_customer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <!-- Hàng 2: Trạng thái và Nút tính tiền -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_booking_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Chưa thanh toán"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_calculate"
+            app:layout_constraintTop_toBottomOf="@id/text_booking_field" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_calculate"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Tính tiền"
+            android:textSize="12sp"
+            app:cornerRadius="8dp"
+            app:strokeColor="@color/primary_color"
+            app:strokeWidth="1dp"
+            android:paddingHorizontal="12dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_booking_date" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
