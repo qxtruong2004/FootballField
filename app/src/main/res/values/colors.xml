@@ -13,4 +13,9 @@
     <color name="secondary">#FF9800</color> <!-- Cam -->
 
     <color name="error">#E53935</color>   <!-- Đỏ tươi -->
+
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="primary_dark">#1976D2</color> <!-- Màu xanh đậm hơn primary -->
+    <color name="secondary_dark">#455A64</color> <!-- Màu xám đậm hơn secondary -->
 </resources>

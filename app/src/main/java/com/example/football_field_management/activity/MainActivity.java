@@ -3,7 +3,6 @@ package com.example.football_field_management.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,16 +15,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.football_field_management.R;
 import com.example.football_field_management.utils.SessionManager;
+import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout logoutLayout;
-
+    private MaterialCardView serviceManagementLayout; // Layout quản lý dịch vụ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         logoutLayout = findViewById(R.id.button_logout);
+        serviceManagementLayout = findViewById(R.id.card_service_management); // lấy id từ layout
         TextView tvWelcome = findViewById(R.id.tvWelcome);
 
         SessionManager sessionManager = new SessionManager(this);
@@ -56,8 +57,10 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
-
-
+        serviceManagementLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ServiceManagementActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void showToast(String message){
