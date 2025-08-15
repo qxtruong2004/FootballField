@@ -2,4 +2,27 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primary">#3F51B5</color> <!-- Xanh Indigo -->
+    <color name="primaryDark">#303F9F</color>
+    <color name="primaryLight">#C5CAE9</color>
+
+    <!-- Màu phụ -->
+    <color name="secondary">#FF9800</color> <!-- Cam -->
+    <color name="secondaryDark">#F57C00</color>
+    <color name="secondaryLight">#FFE0B2</color>
+
+    <!-- Màu nền -->
+    <color name="background">#F5F5F5</color> <!-- Xám nhạt -->
+
+    <!-- Màu chữ -->
+    <color name="textPrimary">#212121</color> <!-- Đen đậm -->
+    <color name="textSecondary">#757575</color> <!-- Xám chữ phụ -->
+
+    <!-- Màu cảnh báo/thành công -->
+
+
+    <color name="success">#4CAF50</color> <!-- Xanh lá -->
+    <color name="error">#E53935</color>   <!-- Đỏ tươi -->
+    <color name="warning">#FFC107</color> <!-- Vàng cam -->
+    <color name="info">#2196F3</color>    <!-- Xanh dương -->
 </resources>

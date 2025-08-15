@@ -1,3 +1,91 @@
 <resources>
-    <string name="app_name">Football_Field_Management</string>
+    <string name="app_name">FootballField</string>
+    <string name="quan_ly_san_bong">Quản Lý Sân Bóng</string>
+    <string name="san_bong">Sân bóng</string>
+    <string name="dich_vu">Dịch vụ</string>
+    <string name="lich_dat">Lịch đặt</string>
+    <string name="thong_ke">Thống kê</string>
+    <string name="tro_giup">Trợ giúp</string>
+    <string name="dang_xuat">Đăng xuất</string>
+    <string name="them_sua_san_bong">Thêm / Sửa Sân Bóng</string>
+    <string name="ten_san_bong">Tên sân bóng</string>
+    <string name="gia_vnd">Giá (VND)</string>
+    <string name="luu">Lưu</string>
+    <string name="quay_lai">Quay lại</string>
+    <string name="loai_san">Loại sân</string>
+
+    <!-- Label trong form -->
+    <string name="chon_san_bong">Chọn sân bóng</string>
+    <string name="ten_khach_hang">Tên khách hàng</string>
+    <string name="so_dien_thoai">Số điện thoại</string>
+    <string name="ngay">Ngày (dd/MM/yyyy)</string>
+    <string name="gio">Giờ (HH:mm)</string>
+    <string name="dich_vu_su_dung">Dịch vụ sử dụng</string>
+
+
+    <string name="them_sua_dich_vu">Thêm/Sửa Dịch Vụ</string>
+    <string name="ten_dich_vu">Tên dịch vụ</string>
+
+
+    <string name="chi_tiet_lich_dat_san">Chi Tiết Lịch Đặt Sân</string>
+    <string name="san_bong_label">Sân bóng:</string>
+    <string name="khach_hang_label">Khách hàng:</string>
+    <string name="so_dien_thoai_label">Số điện thoại:</string>
+    <string name="ngay_label">Ngày:</string>
+    <string name="gio_label">Giờ:</string>
+    <string name="dich_vu_label">Dịch vụ:</string>
+    <string name="tong_tien_label">Tổng tiền:</string>
+    <string name="thanh_toan">Thanh toán</string>
+
+    <string name="quan_ly_lich_dat_san">Quản Lý Lịch Đặt Sân</string>
+    <string name="chua_cap_nhat">Chưa cập nhật</string>
+
+    <string name="san">Sân</string>
+    <string name="khach_hang">Khách hàng</string>
+    <string name="trang_thai">Trạng thái</string>
+    <string name="them_lich_dat_san">Thêm lịch đặt sân</string>
+
+    <string name="ten_san">Tên sân</string>
+    <string name="gia">Giá</string>
+    <string name="them_san_bong">Thêm sân bóng</string>
+
+    <string name="chucnang">Các chức năng của ứng dụng</string>
+    <string name="huong_dan">Hướng dẫn</string>
+
+    <string name="huongdan_buoc1">Đăng nhập hoặc đăng ký để sử dụng ứng dụng.</string>
+    <string name="huongdan_buoc2">Quản lý sân bóng: Thêm, sửa hoặc xóa sân bóng.</string>
+    <string name="huongdan_buoc3">Quản lý dịch vụ: Thêm, sửa hoặc xóa dịch vụ.</string>
+    <string name="huongdan_buoc4">Quản lý lịch đặt sân: Thêm, sửa, xóa và thanh toán lịch.</string>
+    <string name="huongdan_buoc5">Xem thống kê và nhận trợ giúp khi cần.</string>
+
+    <!-- Tiêu đề -->
+    <string name="title_manage_service">Quản Lý Dịch Vụ</string>
+
+    <!-- Header -->
+    <string name="header_service_name">Tên dịch vụ</string>
+    <string name="header_service_price">Giá</string>
+
+    <!-- Button -->
+    <string name="button_add_service">Thêm dịch vụ</string>
+    <string name="button_back">Quay lại</string>
+
+<!--    Thống kê-->
+    <string name="title_statistics">Thống Kê</string>
+    <string name="label_field_count">Số sân bóng</string>
+    <string name="label_service_count">Số dịch vụ</string>
+    <string name="label_booking_count">Số lịch đặt sân</string>
+    <string name="label_total_paid">Tổng tiền đã thanh toán</string>
+
+    <string name="service_icon">Biểu tượng dịch vụ</string>
+
+    <string name="field_name">Tên sân</string>
+    <string name="field_price">Giá</string>
+
+    <string name="booking_field">Sân</string>
+    <string name="booking_customer">Khách hàng</string>
+    <string name="booking_date">Ngày</string>
+    <string name="booking_status">Trạng thái</string>
+    <string name="calculate_button">Tính tiền</string>
+    <string name="them_sua_lich">Thêm sửa lịch</string>
+
 </resources>
