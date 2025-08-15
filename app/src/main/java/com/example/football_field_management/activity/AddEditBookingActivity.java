@@ -1,4 +1,4 @@
-package com.example.football_field_management;
+package com.example.football_field_management.activity;
 
 
 import android.app.DatePickerDialog;
@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.football_field_management.R;
 import com.example.football_field_management.database.DatabaseHelper;
 import com.example.football_field_management.model.Booking;
 import com.example.football_field_management.model.Field;

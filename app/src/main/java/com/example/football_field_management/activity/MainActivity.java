@@ -3,14 +3,20 @@ package com.example.football_field_management.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.football_field_management.R;
@@ -20,13 +26,15 @@ import com.google.android.material.card.MaterialCardView;
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout logoutLayout;
-    private MaterialCardView serviceManagementLayout; // Layout quản lý dịch vụ
+    private MaterialCardView serviceManagementLayout, bookingManagementLayout, fieldManagementLayout ; // Layout quản lý dịch vụ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         logoutLayout = findViewById(R.id.button_logout);
-        serviceManagementLayout = findViewById(R.id.card_service_management); // lấy id từ layout
+        serviceManagementLayout = findViewById(R.id.card_service_management);
+        bookingManagementLayout = findViewById(R.id.card_booking_management);
+        fieldManagementLayout = findViewById(R.id.card_field_management);
         TextView tvWelcome = findViewById(R.id.tvWelcome);
 
         SessionManager sessionManager = new SessionManager(this);
@@ -61,9 +69,18 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ServiceManagementActivity.class);
             startActivity(intent);
         });
+        serviceManagementLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ServiceManagementActivity.class);
+            startActivity(intent);
+        });
+        bookingManagementLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, BookingManagementActivity.class);
+            startActivity(intent);
+        });
+        fieldManagementLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FieldManagementActivity.class);
+            startActivity(intent);
+        });
     }
 
-    private void showToast(String message){
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

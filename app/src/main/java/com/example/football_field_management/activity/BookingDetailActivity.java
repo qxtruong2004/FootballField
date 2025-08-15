@@ -1,4 +1,4 @@
-package com.example.football_field_management;
+package com.example.football_field_management.activity;
 
 
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.football_field_management.R;
 import com.example.football_field_management.database.DatabaseHelper;
 import com.example.football_field_management.model.Booking;
 import com.example.football_field_management.model.ServiceUsage;

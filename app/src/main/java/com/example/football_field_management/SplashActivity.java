@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.football_field_management.activity.BookingManagementActivity;
+import com.example.football_field_management.activity.LoginActivity;
 import com.google.android.material.textview.MaterialTextView;
 
 public class SplashActivity extends AppCompatActivity {
@@ -30,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, BookingManagementActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
         }, 3000);

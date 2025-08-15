@@ -1,7 +1,6 @@
-package com.example.football_field_management;
+package com.example.football_field_management.activity;
 
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.football_field_management.R;
 import com.example.football_field_management.adapter.BookingAdapter;
 import com.example.football_field_management.database.DatabaseHelper;
 import com.example.football_field_management.model.Booking;

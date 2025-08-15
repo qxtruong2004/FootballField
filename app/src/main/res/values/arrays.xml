@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="field_types">
+        <item>Sân 5 người</item>
+        <item>Sân 7 người</item>
+        <item>Sân 11 người</item>
+    </string-array>
+</resources>

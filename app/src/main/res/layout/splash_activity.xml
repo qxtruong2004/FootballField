@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvTitle"
-        android:text="@string/football_field"
+        android:text="Football Field"
         app:layout_constraintTop_toBottomOf="@+id/imvLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
