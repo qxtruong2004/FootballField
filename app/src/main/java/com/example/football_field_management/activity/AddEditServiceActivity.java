@@ -3,6 +3,7 @@ package com.example.football_field_management.activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.football_field_management.R;
 import com.example.football_field_management.database.DatabaseHelper;
 import com.example.football_field_management.model.Service;
+import com.google.android.material.button.MaterialButton;
 
 public class AddEditServiceActivity extends AppCompatActivity {
     private EditText nameEditText, priceEditText;
-    private Button saveButton, backButton;
+
     private DatabaseHelper dbHelper;
+    private MaterialButton btnSave;
+    private ImageButton btnBack;
     private Service service;
 
     @Override
@@ -25,8 +29,8 @@ public class AddEditServiceActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         nameEditText = findViewById(R.id.edit_service_name);
         priceEditText = findViewById(R.id.edit_service_price);
-        saveButton = findViewById(R.id.button_save);
-        backButton = findViewById(R.id.button_back);
+        btnSave = findViewById(R.id.button_save);
+        btnBack = findViewById(R.id.btnBack);
 
         int serviceId = getIntent().getIntExtra("SERVICE_ID", -1);
         if (serviceId != -1) {
@@ -42,7 +46,7 @@ public class AddEditServiceActivity extends AppCompatActivity {
             }
         }
 
-        saveButton.setOnClickListener(v -> {
+        btnSave.setOnClickListener(v -> {
             String name = nameEditText.getText().toString().trim();
             String priceStr = priceEditText.getText().toString().trim();
 
@@ -81,7 +85,7 @@ public class AddEditServiceActivity extends AppCompatActivity {
             }
         });
 
-        backButton.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> finish());
     }
 
 }

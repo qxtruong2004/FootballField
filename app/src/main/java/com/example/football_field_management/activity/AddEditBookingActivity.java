@@ -104,7 +104,7 @@ public class AddEditBookingActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             finish();
         });
-       /* List<Field> fields = dbHelper.getAllFields();
+        List<Field> fields = dbHelper.getAllFields();
 
         List<String> fieldNames = new ArrayList<>();
         List<Integer> fieldIds = new ArrayList<>();
@@ -114,8 +114,8 @@ public class AddEditBookingActivity extends AppCompatActivity {
         }
         ArrayAdapter<String> fieldAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fieldNames);
         fieldAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        fieldSpinner.setAdapter(fieldAdapter);*/
-        // Khởi tạo danh sách sân bóng thủ công
+        fieldSpinner.setAdapter(fieldAdapter);
+        /*// Khởi tạo danh sách sân bóng thủ công
         List<Field> fields = new ArrayList<>();
 
         Field field1 = new Field();
@@ -154,7 +154,7 @@ public class AddEditBookingActivity extends AppCompatActivity {
         );
         fieldAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fieldSpinner.setAdapter(fieldAdapter);
-
+*/
 
         for (Service service : services) {
             View serviceView = LayoutInflater.from(this).inflate(R.layout.item_service_usage, serviceContainer, false);

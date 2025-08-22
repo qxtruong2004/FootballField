@@ -3,6 +3,7 @@ package com.example.football_field_management.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.example.football_field_management.R;
 import com.example.football_field_management.adapter.ServiceAdapter;
 import com.example.football_field_management.database.DatabaseHelper;
 import com.example.football_field_management.model.Service;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
@@ -20,7 +22,8 @@ public class ServiceManagementActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ServiceAdapter adapter;
     private DatabaseHelper dbHelper;
-    private Button addButton, backButton;
+    private ImageButton btnBack;
+    private MaterialButton addButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,7 @@ public class ServiceManagementActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         recyclerView = findViewById(R.id.recycler_services);
         addButton = findViewById(R.id.button_add_service);
-        backButton = findViewById(R.id.button_back);
+        btnBack = findViewById(R.id.btnBack);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Service> services = dbHelper.getAllServices();
@@ -54,7 +57,7 @@ public class ServiceManagementActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         addButton.setOnClickListener(v -> startActivity(new Intent(this, AddEditServiceActivity.class)));
-        backButton.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> finish());
     }
 
     @Override

@@ -10,15 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
+
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@null"
             android:id="@+id/btnBackDetail"
-            android:src="@drawable/arrow_left_large"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/quay_lai"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="15dp"/>
+            app:tint="@color/black"
+            />
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_title"
@@ -31,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="25dp" />
+            android:layout_marginTop="30dp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_field_label"
@@ -187,16 +192,16 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_pay"
+            style="@style/MyMaterialButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Thanh toán"
-            style="@style/MyMaterialButtonStyle"
+            android:layout_marginTop="24dp"
             android:backgroundTint="@color/primary_color"
-            app:layout_constraintTop_toBottomOf="@id/text_total"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="Thanh toán"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp" />
-
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_total" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

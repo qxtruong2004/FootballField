@@ -26,7 +26,7 @@ import com.google.android.material.card.MaterialCardView;
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout logoutLayout;
-    private MaterialCardView serviceManagementLayout, bookingManagementLayout, fieldManagementLayout ; // Layout quản lý dịch vụ
+    private MaterialCardView serviceManagementLayout, bookingManagementLayout, fieldManagementLayout, statisticsLayout, helpLayout ; // Layout quản lý dịch vụ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         serviceManagementLayout = findViewById(R.id.card_service_management);
         bookingManagementLayout = findViewById(R.id.card_booking_management);
         fieldManagementLayout = findViewById(R.id.card_field_management);
+        statisticsLayout = findViewById(R.id.card_statistics);
+        helpLayout = findViewById(R.id.card_help);
         TextView tvWelcome = findViewById(R.id.tvWelcome);
 
         SessionManager sessionManager = new SessionManager(this);
@@ -81,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, FieldManagementActivity.class);
             startActivity(intent);
         });
+        statisticsLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, StatisticsActivity.class);
+            startActivity(intent);
+        });
+        helpLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+            startActivity(intent);
+        });
+
+
     }
 
 }

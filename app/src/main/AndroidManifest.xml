@@ -32,6 +32,10 @@
         <activity android:name=".activity.FieldManagementActivity" />
         <activity android:name=".activity.AddEditFieldActivity" />
         <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.MomoQrActivity"/>
+        <activity android:name=".activity.StatisticsActivity"/>
+        <activity android:name=".activity.HelpActivity"/>
+
 
 
     </application>

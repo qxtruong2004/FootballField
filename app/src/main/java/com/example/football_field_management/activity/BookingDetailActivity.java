@@ -1,6 +1,7 @@
 package com.example.football_field_management.activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -102,9 +103,12 @@ public class BookingDetailActivity extends AppCompatActivity {
 
         payButton.setOnClickListener(v -> {
             if (booking != null && !booking.isPaid()) {
-                dbHelper.markBookingAsPaid(booking.getId());
-                Toast.makeText(this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();
-                finish();
+                Intent intent = new Intent(this, MomoQrActivity.class);
+                intent.putExtra("amount", (int) Double.parseDouble(totalTextView.getText().toString()));
+                intent.putExtra("message", "Thanh toán cho sân bóng " + fieldTextView.getText());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Đã thanh toán hoặc không có lịch đặt.", Toast.LENGTH_SHORT).show();
             }
         });
 
